@@ -1,0 +1,24 @@
+<div class="container">
+  <div *ngIf="isImage" class="image_container">
+    <img [src]="mediaService.mediaUrl + file.thumbnails['320']">
+    <h1>{{ file.title }}</h1>
+    <h3>{{ file.description }}</h3>
+    <p>Uploaded by: {{user.username}} </p>
+  </div>
+  <div *ngIf="isAudio" class="audio_container">
+    <audio controls>
+      <source [src]="mediaService.mediaUrl + file.filename" [type]="file.mime_type">
+    </audio>
+    <h1>{{ file.title }}</h1>
+    <h3>{{ file.description }}</h3>
+    <p>Uploaded by: {{user.username}} </p>
+  </div>
+  <div *ngIf="isVideo" class="video_container">
+    <video width="320" height="240" controls>
+      <source [src]="mediaService.mediaUrl + file.filename" [type]="file.mime_type">
+      <h1>{{ file.title }}</h1>
+      <h3>{{ file.description }}</h3>
+      <p>Uploaded by: {{user.username}} </p>
+    </video>
+  </div>
+</div>
